@@ -9,7 +9,7 @@ var client = new GitHubClient(new ProductHeaderValue("my-cool-app"));
 This will let you access unauthenticated GitHub APIs, but you will be subject to rate limiting (you can read more about this [here](https://developer.github.com/v3/#rate-limiting)).
 
 But why do you need this `ProductHeaderValue` value?
-
+asd
 The API will reject you if you don't provide a `User-Agent` header (more details [here](https://developer.github.com/v3/#user-agent-required)). This is also to identify applications that are accessing the API and enable GitHub to contact the application author if there are problems. So pick a name that stands out!
 
 ### Authenticated Access
@@ -20,12 +20,12 @@ There are two options supported by the API - basic and OAuth authentication.
 
 ```csharp
 var basicAuth = new Credentials("username", "password"); // NOTE: not real credentials
-client.Credentials = basicAuth;
+client.Connection.Credentials = basicAuth;
 ```
 
 ```csharp
 var tokenAuth = new Credentials("token"); // NOTE: not real token
-client.Credentials = tokenAuth;
+client.Connection.Credentials = tokenAuth;
 ```
 
 It is **strongly recommended** to use the [OAuth Flow](https://github.com/octokit/octokit.net/blob/master/docs/oauth-flow.md) for interactions on behalf of a user, as this gives two significant benefits:
